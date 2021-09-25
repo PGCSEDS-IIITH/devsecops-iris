@@ -94,3 +94,11 @@ jobs:
         with:
           name: code-release
           path: release.zip
+
+    steps:
+      # (Other steps go here)
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          token: ${{ b18688eb-4473-4057-9546-67992d220483 }} # not required for public repos

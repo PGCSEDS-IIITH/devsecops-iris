@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
-from ml_utils import load_model, predict, retrain
+from ml_utils import load_model, predict #retrain
 from typing import List
 
 # defining the main app
@@ -49,13 +49,13 @@ def predict_flower(query_data: QueryIn):
     return output
 
 
-@app.post("/feedback_loop", status_code=200)
+#@app.post("/feedback_loop", status_code=200)
 # Route to further train the model based on user input in form of feedback loop
 # Payload: FeedbackIn containing the parameters and correct flower class
 # Response: Dict with detail confirming success (200)
-def feedback_loop(data: List[FeedbackIn]):
-    retrain(data)
-    return {"detail": "Feedback loop successful"}
+#def feedback_loop(data: List[FeedbackIn]):
+    #retrain(data)
+    #return {"detail": "Feedback loop successful"}
 
 
 # Main function to start the app when main.py is called

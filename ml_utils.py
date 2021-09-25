@@ -33,6 +33,7 @@ def predict(query_data):
 
 
 # function to retrain the model as part of the feedback loop
+"""
 def retrain(data):
     # pull out the relevant X and y from the FeedbackIn object
     X = [list(d.dict().values())[:-1] for d in data]
@@ -40,3 +41,4 @@ def retrain(data):
 
     # fit the classifier again based on the new data obtained
     clf.fit(X, y)
+"""

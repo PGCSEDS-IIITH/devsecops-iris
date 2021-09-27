@@ -19,11 +19,9 @@ class QueryIn(BaseModel):
     petal_length: float
     petal_width: float
 
-
 # class which is returned in the response
 class QueryOut(BaseModel):
     flower_class: str
-
 
 # class which is expected in the payload while re-training
 class FeedbackIn(BaseModel):
@@ -33,13 +31,11 @@ class FeedbackIn(BaseModel):
     petal_width: float
     flower_class: str
 
-
 # Route definitions
 @app.get("/ping")
 # Healthcheck route to ensure that the API is up and running
 def ping():
     return {"ping": "pong"}
-
 
 @app.post("/predict_flower", response_model=QueryOut, status_code=200)
 # Route to do the prediction using the ML model defined.
@@ -48,7 +44,6 @@ def ping():
 def predict_flower(query_data: QueryIn):
     output = {"flower_class": predict(query_data)}
     return output
-
 
 @app.post("/feedback_loop", status_code=200)
 # Route to further train the model based on user input in form of feedback loop
@@ -60,7 +55,6 @@ def feedback_loop(data: List[FeedbackIn]):
         "detail": "Feedback loop successful",
         "timestamp": datetime.timestamp(datetime.now())
         }
-
 
 # Main function to start the app when main.py is called
 if __name__ == "__main__":
